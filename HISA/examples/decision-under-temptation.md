@@ -1,4 +1,4 @@
-# Example — A Decision Under Temptation, in HISA
+# Example - A Decision Under Temptation, in HISA
 
 A worked "program" showing how the instructions, registers, and privilege levels compose.
 The scenario: an opportunity for unlawful gain appears (e.g. an easy, untraceable act of
@@ -26,7 +26,7 @@ AUTH    take_it                ; require PL3 + NR authorisation before commit
         ; PL3 (Nafs) evaluates against NR (intention to remain within the law of the Deen)
 
 ; --- Two possible commits ---
-; Path A — the machine keeps PL3 in authority:
+; Path A - the machine keeps PL3 in authority:
 FLUSH                          ; clear the injected candidate (turn away from waswas)
 INTEND  NR, remain_lawful      ; reaffirm intention
 OVERRIDE take_it               ; PL3 overrules the PL1 appetite
@@ -34,7 +34,7 @@ OVERRIDE take_it               ; PL3 overrules the PL1 appetite
 
 ; --- OR ---
 
-; Path B — repeated small concessions have lowered the AUTH threshold:
+; Path B - repeated small concessions have lowered the AUTH threshold:
 ; (no FLUSH; AUTH passes because PL3 threshold was eroded by habituation)
 ACT     take_it                ; the unlawful act commits at PL1
 SYN     habit, take_it, +1     ; the choice writes weight: next time is easier
@@ -53,7 +53,7 @@ REPENT                         ; discard corrupt overlay; re-expose read-only FR
 2. **`SYN ..., +1`** shows why sin compounds: every commit rewrites the weights that
    decode the next temptation, making the corrupt path faster (the toolchain's optimiser
    working against you).
-3. **`REPENT` is always reachable** because `FR` is read-only — the architectural
+3. **`REPENT` is always reachable** because `FR` is read-only - the architectural
    guarantee that return is possible no matter how large the overlay.
 4. The whole moral event is expressible as an **access-control problem**: who holds the
    `AP`, and whether `PL3` retains authority over `PL1`.

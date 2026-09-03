@@ -1,4 +1,4 @@
-# HISA Spec 04 — Standard Extensions (the Human Superset)
+# HISA Spec 04 - Standard Extensions (the Human Superset)
 
 > These are the **standard extensions** that turn LISA into HISA, in the way RISC-V's
 > `M`, `A`, `F`, `D`, `C`, `V` turn `RV32I` into a full application processor. Each is
@@ -21,14 +21,14 @@ LISA (base)
   ├─ T  Time-binding        depends on: R, NR
   ├─ Vo Volition            depends on: S, T          ← the Amanah
   ├─ E  Affect              depends on: base (couples to all)
-  └─ Q  Qarin channel [C]   depends on: —  (adversarial side-channel)
+  └─ Q  Qarin channel [C]   depends on: -  (adversarial side-channel)
 ```
 
 ---
 
-## `L` — Language extension  [A/B]
+## `L` - Language extension  [A/B]
 
-Recursive, generative symbol manipulation — argued to be computationally unique to humans
+Recursive, generative symbol manipulation - argued to be computationally unique to humans
 in this form (Hauser, Chomsky & Fitch, 2002).
 
 | Mnemonic | Operands | Action | Correlate |
@@ -42,7 +42,7 @@ in this form (Hauser, Chomsky & Fitch, 2002).
 > a finite machine express infinitely many thoughts. It is the linguistic analogue of
 > recursion in a programming language.
 
-## `M` — Memory extension  [A]
+## `M` - Memory extension  [A]
 
 Turns raw `SYN` plasticity into structured, addressable memory systems.
 
@@ -55,9 +55,9 @@ Turns raw `SYN` plasticity into structured, addressable memory systems.
 
 > `RECALL` is **content-addressable** (a cue retrieves the whole), unlike a silicon
 > `LOAD` (which needs a numeric address). `RECON` means every read can rewrite the
-> memory — the architectural root of why testimony and self-narrative drift.
+> memory - the architectural root of why testimony and self-narrative drift.
 
-## `R` — Reasoning extension  [A/B]
+## `R` - Reasoning extension  [A/B]
 
 | Mnemonic | Operands | Action | Mode |
 |----------|----------|--------|------|
@@ -70,7 +70,7 @@ Turns raw `SYN` plasticity into structured, addressable memory systems.
 > computing, and control theory onto theology. Analogy is a first-class instruction of
 > the human machine, not a rhetorical decoration.
 
-## `S` — Self-reference extension  [B]
+## `S` - Self-reference extension  [B]
 
 The machine models itself as an object in its own memory. This reflexive capacity is the
 structure Gödel (1931) showed can shake a formal system, and that Hofstadter (1979)
@@ -82,9 +82,9 @@ argued is the germ of selfhood.
 | `META`  | `rd, rs1` | Evaluate the machine's own process `rs1` | Metacognition |
 | `TOM`   | `rd, rs1` | Model another agent `rs1`'s hidden state into `rd` | Theory of mind (mirror system; Rizzolatti & Craighero, 2004) |
 
-## `T` — Time-binding extension  [B]
+## `T` - Time-binding extension  [B]
 
-Binds intention across time against present appetite — the prerequisite for *Niyyah* and
+Binds intention across time against present appetite - the prerequisite for *Niyyah* and
 for delayed gratification.
 
 | Mnemonic | Operands | Action | Correlate |
@@ -98,9 +98,9 @@ for delayed gratification.
 > model: "actions are but by intentions" (Bukhari 1) is, here, the statement that the
 > value of an executed `ACT` is read from `NR`, not from the motor result alone.
 
-## `Vo` — Volition extension (the Amanah)  [B/C]
+## `Vo` - Volition extension (the Amanah)  [B/C]
 
-The capacity to select an action **against** the machine's own optimisation gradient —
+The capacity to select an action **against** the machine's own optimisation gradient -
 to choose the worse-for-me because it is the right. This is the extension the book
 identifies with the *Amanah*, the trust the heavens and earth declined (Quran 33:72).
 It is what makes the machine's execution **non-deterministic in principle**, not merely
@@ -110,14 +110,14 @@ in practice.
 |----------|----------|--------|
 | `CHOOSE`| `rd, rs1, rs2` | Select between options `rs1`,`rs2` **without** being forced by the reward gradient |
 | `OVERRIDE` | `rs1` | `PL3` overrules a `PL1` habit or appetite about to execute `rs1` |
-| `REPENT`| — | Discard accumulated corrupt state; re-expose `FR` (Fitrah); reset `HZ` | 
+| `REPENT`| - | Discard accumulated corrupt state; re-expose `FR` (Fitrah); reset `HZ` |
 
 > `REPENT` is architecturally always available because `FR` is read-only and therefore
 > never destroyed (see [registers](01-registers-and-state.md)). No matter how corrupt the
 > overlay, the factory configuration can be re-exposed. This is a design guarantee, not a
 > sentiment.
 
-## `E` — Affect extension  [A/B]
+## `E` - Affect extension  [A/B]
 
 Emotion as a cross-cutting modulator: it biases decode, weights memory, and sets the
 gain on nearly every other instruction. Operates on `E0`–`E3`.
@@ -128,7 +128,7 @@ gain on nearly every other instruction. Operates on `E0`–`E3`.
 | `MODULATE` | `rs1` | Scale the gain of pipeline stage `rs1` by current `E`-state |
 | `TAG`      | `rs1` | Attach affective weight to memory trace `rs1` (why emotional memories persist) |
 
-## `Q` — Qarin channel extension  **[C — speculative]**
+## `Q` - Qarin channel extension  **[C - speculative]**
 
 > **This extension is speculative and clearly labelled as such.** It is included because
 > the book argues the human machine exposes a channel to an unseen attached observer
@@ -151,7 +151,7 @@ Defence instructions (the "firewall"), the book's practices expressed as ISA ope
 |----------|----------|--------|-------|
 | `SHIELD` | `imm` | Raise protective state for interval `imm` (morning/evening *adhkar*, *Ruqyah*) | [B/C] |
 | `AUTH`   | `rs1` | Require `PL3`+`NR` authorisation before committing `rs1` (guards against injected acts) | [B] |
-| `FLUSH`  | — | Clear injected candidates from the decode queue (turning away from *waswas*) | [B/C] |
+| `FLUSH`  | - | Clear injected candidates from the decode queue (turning away from *waswas*) | [B/C] |
 
 > In this model, `WHISPER` cannot *force* execution: an injected candidate still has to
 > pass `AUTH` at `PL3`. The adversary's strategy is therefore to lower the `PL3`

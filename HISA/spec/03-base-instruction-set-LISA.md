@@ -1,6 +1,6 @@
-# HISA Spec 03 — The Base Instruction Set (LISA)
+# HISA Spec 03 - The Base Instruction Set (LISA)
 
-> **LISA** is the base integer set of the living machine — the operations shared, in
+> **LISA** is the base integer set of the living machine - the operations shared, in
 > subsets, by *all* life. It is to HISA what `RV32I` is to RISC-V: the mandatory core on
 > which every extension builds. Every instruction below is listed in ISA-manual style:
 > **mnemonic**, **operands**, **format** (see [02](02-instruction-formats.md)), a
@@ -38,7 +38,7 @@ Notation: `rd` destination register, `rs1`/`rs2` source registers, `imm` immedia
 
 > These four implement the **central dogma** (Crick, 1970) as a firmware execution
 > pipeline: `TXN → TRL → FOLD`. `EXPR` is the control input that decides *which*
-> instructions run — the biological equivalent of conditional compilation.
+> instructions run - the biological equivalent of conditional compilation.
 
 ## 3. Signalling group (the interconnect)
 
@@ -49,7 +49,7 @@ Notation: `rd` destination register, `rs1`/`rs2` source registers, `imm` immedia
 | `HORM`  | `rs1, imm` | I | Broadcast chemical signal `rs1` at level `imm` over the bus | Endocrine signalling |
 | `IMMUN` | `rd, rs1` | R | Tag `rs1` as self/non-self; dispatch response to `rd` | Immune recognition |
 
-> `SYN` is the **write instruction of the learning hardware** — the single primitive
+> `SYN` is the **write instruction of the learning hardware** - the single primitive
 > whose repeated execution *is* learning. The toolchain's optimiser (see
 > [`toolchain/compiler.md`](../toolchain/compiler.md)) is, at bottom, a scheduler of
 > `SYN` operations.
@@ -69,7 +69,7 @@ Notation: `rd` destination register, `rs1`/`rs2` source registers, `imm` immedia
 | `ATTN`  | `imm` | U | Load the attention pointer: `AP ← imm` (attend to target) | Attention shift |
 | `BThr`  | `rs1, rs2, imm` | B | Branch if `[rs1]` crosses threshold `rs2` to target `imm` | Threshold-gated response |
 | `REFLEX`| `rs1, imm` | I | Fast fixed path: on stimulus `rs1`, `ACT imm` bypassing higher layers | Reflex arc (spinal) |
-| `HALT`  | — | — | Cease execution of the unit | Death (of a cell; at the organism scale, the one disease with no cure) |
+| `HALT`  | - | - | Cease execution of the unit | Death (of a cell; at the organism scale, the one disease with no cure) |
 
 > `REFLEX` is the machine's real-time interrupt: it commits an action *before* the
 > deliberative pipeline can run, which is why a hand leaves a hot surface before the pain

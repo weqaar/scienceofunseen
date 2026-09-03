@@ -1,4 +1,4 @@
-# HISA Toolchain — How Experience Compiles into Behaviour
+# HISA Toolchain - How Experience Compiles into Behaviour
 
 > A silicon ISA is useless without a toolchain: the compiler, assembler, and linker that
 > turn human-written source into machine instructions. HISA has an equivalent, and it
@@ -13,10 +13,10 @@
 |---------------|-----------|--------------|
 | **Source code** | **Experience / instruction / revelation** | The input to be internalised: a lesson, a repeated environment, a text, a companion's example. |
 | **Front-end / parser** | **Perception + interpretation** | `PARSE`, `APPRAISE`: raw experience is decoded into structured meaning. |
-| **IR (intermediate representation)** | **Explicit knowledge** | A consciously held rule ("I should do X") in working memory — slow, effortful, `PL2`. |
+| **IR (intermediate representation)** | **Explicit knowledge** | A consciously held rule ("I should do X") in working memory - slow, effortful, `PL2`. |
 | **Optimiser** | **Practice / rehearsal** | Repetition schedules `SYN` writes; the rule is compressed and accelerated. |
 | **Back-end / codegen** | **Procedural skill** | The rule becomes a motor/behavioural program. |
-| **Loader → cached microcode** | **Habit (compiled to `PL1`)** | The skill runs automatically, fast, without conscious issue — installed as a new `REFLEX` path. |
+| **Loader → cached microcode** | **Habit (compiled to `PL1`)** | The skill runs automatically, fast, without conscious issue - installed as a new `REFLEX` path. |
 
 **The key insight:** a behaviour you perform effortfully today is *source code*; the same
 behaviour performed automatically years later is the *compiled binary*. Practice is the
@@ -28,12 +28,12 @@ compiled output of your most-repeated inputs.
 Learning, at the base ISA, is nothing but repeated `SYN` (synaptic-weight) writes (Hebb,
 1949). The "optimiser" is whatever schedules those writes efficiently:
 
-- **Spaced repetition** > massed repetition (the spacing effect; Ebbinghaus, 1885) — the
+- **Spaced repetition** > massed repetition (the spacing effect; Ebbinghaus, 1885) - the
   optimiser gets better code from distributed `SYN` writes.
 - **Sleep is the link stage.** Durable installation (`CONS`) requires sleep-dependent
   consolidation; without it the binary does not persist.
 - **Emotion sets optimisation priority.** `TAG` (E-extension) marks salient experience for
-  aggressive optimisation — why one frightening event compiles in a single pass while dull
+  aggressive optimisation - why one frightening event compiles in a single pass while dull
   facts need dozens.
 
 ## 3. What you can and cannot compile  [B]

@@ -30,6 +30,6 @@ claim traceable to its source.
 
 - Is HISA **Turing-complete**, sub-Turing, or super-Turing? Argue rigorously.
 - Is the human **"truly complete"** (able to express any operation a living system could)?
-  The book leaves this open on purpose — *are we?*
+  The book leaves this open on purpose - *are we?*
 - Formalise the `SYN`-scheduling optimiser against known results in learning theory.
 - Propose falsifiable predictions for any `[C]` claim to move it toward `[B]` or `[A]`.

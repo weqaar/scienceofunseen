@@ -1,10 +1,10 @@
-# HISA Spec 02 — Instruction Formats
+# HISA Spec 02 - Instruction Formats
 
 > Modelled on RISC-V's fixed-length, regular encoding formats (R/I/S/B/U/J). Real silicon
 > uses fixed bit-fields; HISA is not implemented in bits, so "format" here means the
-> **operand shape** of an instruction — how many sources, whether an immediate is present,
+> **operand shape** of an instruction - how many sources, whether an immediate is present,
 > whether it branches. The regularity is the point: like RISC-V and the PDP-11, HISA aims
-> for **orthogonality** — any register usable by any operation of the right shape.
+> for **orthogonality** - any register usable by any operation of the right shape.
 
 | Format | Shape | Fields | Example instruction |
 |--------|-------|--------|---------------------|
@@ -19,12 +19,12 @@
 - `rd` is always written; `rs1`,`rs2` always read.
 - Immediates are sign-extended where meaningful (e.g. `SYN` weight change may be negative:
   synaptic *depression*).
-- One register in each file reads as an inert zero-equivalent (cf. RISC-V `x0`) — a "no
+- One register in each file reads as an inert zero-equivalent (cf. RISC-V `x0`) - a "no
   effect" target used to discard results.
 
 **Orthogonality caveat.** Three registers are *not* fully orthogonal, by design:
-- `FR` (Fitrah) is **read-only** — it can never be a `rd`.
-- `NR` (Niyyah) is **privileged** — only `INTEND`/`WILL` at `PL2`+ may write it.
+- `FR` (Fitrah) is **read-only** - it can never be a `rd`.
+- `NR` (Niyyah) is **privileged** - only `INTEND`/`WILL` at `PL2`+ may write it.
 - `QC` (Qarin channel) is **read-only** and available only under the [C] `Q` extension.
 
 → [Base instruction set (LISA) »](03-base-instruction-set-LISA.md)

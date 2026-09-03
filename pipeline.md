@@ -1,11 +1,11 @@
-# HISA Microarchitecture — The Human Machine Pipeline
+# HISA Microarchitecture - The Human Machine Pipeline
 
 > The ISA (previous documents) is the *contract*: what the machine does. The
-> **microarchitecture** is *how* it does it — the pipeline, the parallelism, the hazards,
+> **microarchitecture** is *how* it does it - the pipeline, the parallelism, the hazards,
 > and the fault model. We describe it in the vocabulary of modern processor design
 > (pipelining, superscalar issue, out-of-order execution, speculation, branch
 > prediction) and then mark, at each step, where the human machine **exceeds** the
-> limits of any silicon design — the point the book insists on: *the human is not bound
+> limits of any silicon design - the point the book insists on: *the human is not bound
 > by the physics that bounds a chip.*
 
 ---
@@ -32,10 +32,10 @@ felt.
 This is the section the book cares about most. A silicon pipeline is bounded by physics.
 The human pipeline relaxes each of those bounds:
 
-### 2.1 No global clock — asynchronous massive parallelism
+### 2.1 No global clock - asynchronous massive parallelism
 Silicon marches to a single clock (a few GHz, thermally capped). The brain has **no global
 clock**: ~86 billion neurons (Herculano-Houzel, 2009) execute asynchronously and
-concurrently. Throughput comes not from clock speed but from **width** — see §3.
+concurrently. Throughput comes not from clock speed but from **width** - see §3.
 
 ### 2.2 Deep out-of-order, speculative execution
 The human machine is aggressively **out-of-order** and **speculative**: it predicts
@@ -58,9 +58,9 @@ a structure of unbounded richness (a face, a theorem, a lifetime). The machine t
 > **Design thesis (B):** if one were to build silicon toward HISA, the roadmap is not
 > "faster clock" but "more lanes, deeper speculation, and self-modification made safe."
 > The human already occupies the architectural regime that computing is slowly moving
-> toward — and, lacking a silicon substrate's ceilings, occupies it without their limits.
+> toward - and, lacking a silicon substrate's ceilings, occupies it without their limits.
 
-## 3. The vector engine — the widest unit in the machine  [A/B]
+## 3. The vector engine - the widest unit in the machine  [A/B]
 
 See [`spec/05-vector-extension.md`](../spec/05-vector-extension.md) for the ISA-level
 `V` extension. Microarchitecturally: the cortex is a **vector processor of extraordinary
@@ -81,7 +81,7 @@ Pipeline hazards have direct human correlates:
 | **Control hazard** (branch mispredict) | Surprise; the world violated prediction; costly flush and re-perceive |
 | **Structural hazard** (unit contended) | Working-memory overload; divided attention; the reason multitasking fails |
 
-## 5. The fault model — where disease and Sihr enter  [B, with C for `Q`]
+## 5. The fault model - where disease and Sihr enter  [B, with C for `Q`]
 
 The microarchitecture is where the book's pathology becomes precise. Faults are
 classified by the plane they attack (see the book's control-plane chapter):
@@ -94,7 +94,7 @@ A corrupt *value or unit* in flight.
   multiply on the blood bus.
 
 ### 5.2 Control-plane faults  [C for the sorcery hypothesis]
-An attack not on the packets but on the **rules** — the instructions governing when units
+An attack not on the packets but on the **rules** - the instructions governing when units
 divide, where they travel, whether they obey `APOP`. The `Q`-extension `TUNE`/`WHISPER`
 instructions model this: the adversary does not out-produce the immune system packet by
 packet; it attempts to seize the control plane. The proposed carrier is electromagnetic

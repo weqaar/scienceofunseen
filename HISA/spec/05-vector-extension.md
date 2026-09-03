@@ -1,4 +1,4 @@
-# HISA Spec 05 — The `V` (Vector) Extension
+# HISA Spec 05 - The `V` (Vector) Extension
 
 > RISC-V's `V` extension adds vector operations that apply one instruction across many
 > data elements at once (SIMD/vector processing). HISA's `V` extension is the same idea
@@ -8,7 +8,7 @@
 
 ## 1. Why the human is a vector machine  [A]
 
-A single act of recognition — seeing a face, catching a ball, parsing a sentence — applies
+A single act of recognition - seeing a face, catching a ball, parsing a sentence - applies
 the *same* operation across an enormous number of elements simultaneously. The visual
 system alone processes on the order of 10⁶ retinal inputs in parallel through a cortex of
 ~10¹¹ neurons. There is no serial loop over pixels; there is one massively wide vector
@@ -19,13 +19,13 @@ operation. The brain is, natively, a vector processor.
 | Property | Silicon SIMD / GPU | HISA `V` |
 |----------|--------------------|----------|
 | Vector width (lanes) | 4–512 (CPU SIMD); ~10⁴–10⁵ (GPU) | ~10¹¹ elements engaged in a single perceptual op |
-| Lane count fixed at manufacture | Yes | **No** — recruited dynamically; plastic |
+| Lane count fixed at manufacture | Yes | **No** - recruited dynamically; plastic |
 | Clocked | Yes (thermal cap) | **Asynchronous**, no global clock |
-| Elements are fixed-width | Yes (e.g. 32-bit floats) | **No** — each element an arbitrarily rich value |
+| Elements are fixed-width | Yes (e.g. 32-bit floats) | **No** - each element an arbitrarily rich value |
 | Precision | Fixed | **Mixed/adaptive** (sharp where attended, coarse elsewhere) |
 
 > The design point of the book: to move silicon *toward* the human, you do not raise the
-> clock — you add lanes, make lane-count dynamic, and drop the fixed word width. The human
+> clock - you add lanes, make lane-count dynamic, and drop the fixed word width. The human
 > already sits in that regime, and, having no silicon substrate, without its ceilings.
 
 ## 3. Vector instructions  [A/B]
@@ -40,7 +40,7 @@ operation. The brain is, natively, a vector processor.
 
 > `VMASK` is attention expressed as a vector predicate: the machine does not process one
 > thing at a time; it processes *everything* at once and **masks** to a subset. This
-> inverts the naive picture of attention as a spotlight scanning a dark room — the room is
+> inverts the naive picture of attention as a spotlight scanning a dark room - the room is
 > already fully lit in parallel; attention is a mask over an all-at-once computation.
 
 ## 4. Consequence for the complexity claim  [B/C]

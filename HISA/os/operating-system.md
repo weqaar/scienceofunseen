@@ -18,7 +18,7 @@ firmware/brainstem layer. It cannot, by design, be halted by user processes - yo
 
 ## 2. The scheduler - attention (`AP`)  [A/B]
 
-The scarcest resource in the machine is **conscious working memory** (`W0`–`W6`, ~4–7
+The scarcest resource in the machine is **conscious working memory** (`W0` to `W6`, ~4 to 7
 slots). The scheduler that allocates it is **attention**, and the `AP` register is its
 run-pointer.
 
@@ -48,14 +48,14 @@ run-pointer.
 
 ## 4. Device drivers - the sensory/motor interfaces  [A]
 
-The senses (`S0`–`S5`) and actuators (`M0`–`M2`) are the device layer (book Layer 3). The
+The senses (`S0` to `S5`) and actuators (`M0` to `M2`) are the device layer (book Layer 3). The
 OS calibrates them continuously (e.g. adapting to lighting, to a shifted centre of
 gravity) - driver auto-tuning. Sensory illusions are driver bugs exposed by inputs outside
 the calibrated range.
 
 ## 5. Privilege and protection  [A/B]
 
-The privilege ladder (`PL0`–`PL3`, see [registers](../spec/01-registers-and-state.md)) is
+The privilege ladder (`PL0` to `PL3`, see [registers](../spec/01-registers-and-state.md)) is
 the protection model:
 
 | Level | Role | Can override |

@@ -17,11 +17,11 @@ human cognitive pipeline maps cleanly onto them:
 
 | # | Silicon stage | HISA stage | What happens |
 |---|---------------|------------|--------------|
-| 1 | **IF** Instruction Fetch | **Perceive** | Sense transducers write `S0`–`S5`; salient input is fetched to `AP`. |
+| 1 | **IF** Instruction Fetch | **Perceive** | Sense transducers write `S0` to `S5`; salient input is fetched to `AP`. |
 | 2 | **ID** Instruction Decode | **Interpret** | Raw input is parsed against memory and expectation (`PARSE`, `APPRAISE`). |
 | 3 | **EX** Execute | **Deliberate** | Reasoning/volition operate (`R`, `Vo` extensions); `HZ` may raise. |
 | 4 | **MEM** Memory access | **Consolidate** | Read/write long-term memory (`RECALL`, `ENC`). |
-| 5 | **WB** Writeback | **Commit / Act** | Motor registers `M0`–`M2` written; behaviour emitted (`ACT`). |
+| 5 | **WB** Writeback | **Commit / Act** | Motor registers `M0` to `M2` written; behaviour emitted (`ACT`). |
 
 A **reflex** (`REFLEX`) is the pipeline's fast bypass: stimulus in stage 1 jumps directly
 to a stage-5 commit, skipping deliberation. This is why the hand withdraws before pain is
@@ -32,28 +32,40 @@ felt.
 This is the section the book cares about most. A silicon pipeline is bounded by physics.
 The human pipeline relaxes each of those bounds:
 
-### 2.1 No global clock - asynchronous massive parallelism
-Silicon marches to a single clock (a few GHz, thermally capped). The brain has **no global
-clock**: ~86 billion neurons (Herculano-Houzel, 2009) execute asynchronously and
-concurrently. Throughput comes not from clock speed but from **width** - see §3.
+### 2.1 No single global clock - asynchronous massive parallelism
+Silicon marches to a single clock (a few GHz, thermally capped). The brain has **no single
+global clock**: about 86 billion neurons (Azevedo et al., 2009) execute asynchronously and
+concurrently. Timing is still coordinated, but locally: populations lock to shared
+rhythms (Buzsáki & Draguhn, 2004), and a master clock in the hypothalamus keeps daily time
+for the whole body (Mohawk, Green & Takahashi, 2012). Throughput comes not from clock speed
+but from **width** - see §3.
 
 ### 2.2 Deep out-of-order, speculative execution
 The human machine is aggressively **out-of-order** and **speculative**: it predicts
 sensory input before it arrives (predictive coding; Rao & Ballard, 1999) and pre-executes
 likely continuations. Perception is largely the pipeline *committing its own speculation*
-and correcting on mismatch. Silicon speculates a few dozen instructions ahead; the human
-speculates whole seconds of a predicted world.
+and correcting on mismatch. A modern out-of-order core speculates a few hundred instructions
+ahead; the human anticipates whole seconds of a predicted world.
 
 ### 2.3 Self-modifying by design
-Self-modifying code is a hazard silicon designers forbid. The human pipeline is
-**intrinsically self-modifying**: every execution runs `SYN`, altering the very weights
-that will decode the next input. The machine that runs the program is rewritten by
-running it. This is learning, and it is a feature, not a bug.
+Self-modifying code is something silicon designers avoid and fence off with special
+rules. The human pipeline is **intrinsically self-modifying**: every execution runs `SYN`, altering the very weights
+that will decode the next input, and over time it grows and removes connections too
+(`SPROUT`, `PRUNE`). The machine that runs the program is rewritten by running it, and
+can even acquire operations it did not have before (`RECYCLE`; see the
+[`N` extension](../spec/06-neural-network-extension.md)). This is learning, and it is a
+feature, not a bug.
 
-### 2.4 No fixed word width
-There is no 64-bit ceiling on a "value." A single working-memory slot (`W0`–`W6`) can hold
+### 2.4 Modulated execution
+On silicon an `ADD` always adds. In the brain, neuromodulators (`DA`, `5HT`, `NE`, `ACh`)
+act as mode registers that change what the same circuit computes (Marder, 2012). The
+pipeline's behaviour therefore depends on chemical state as well as on input - one reason
+sleep, stress, illness, and medication change how hard a choice feels.
+
+### 2.5 No fixed word width
+There is no 64-bit ceiling on a "value." A single working-memory slot (`W0` to `W6`) can hold
 a structure of unbounded richness (a face, a theorem, a lifetime). The machine trades
-*capacity* (only ~4–7 slots) for *unbounded value width per slot*.
+*capacity* (only ~4 to 7 slots) for *unbounded value width per slot*.
 
 > **Design thesis (B):** if one were to build silicon toward HISA, the roadmap is not
 > "faster clock" but "more lanes, deeper speculation, and self-modification made safe."
@@ -64,7 +76,8 @@ a structure of unbounded richness (a face, a theorem, a lifetime). The machine t
 
 See [`spec/05-vector-extension.md`](../spec/05-vector-extension.md) for the ISA-level
 `V` extension. Microarchitecturally: the cortex is a **vector processor of extraordinary
-width**. A single act of recognition applies one operation across ~10¹¹ elements at once.
+width**. A single act of recognition engages very large populations of its roughly
+1.6 x 10¹⁰ neurons at once, and each neuron is itself a small network.
 Modern silicon SIMD is hundreds of lanes wide; GPUs reach tens of thousands; the cortex
 operates in a regime orders of magnitude beyond, and, critically, its lane count is not
 fixed by a manufactured die. This is the concrete meaning of the book's claim that the
@@ -77,7 +90,7 @@ Pipeline hazards have direct human correlates:
 
 | Silicon hazard | HISA correlate |
 |----------------|----------------|
-| **Data hazard** (needed value not ready) | Tip-of-the-tongue; decision made before evidence arrives |
+| **Data hazard** (needed value not ready) | Tip-of-the-tongue; decision made before the facts arrive |
 | **Control hazard** (branch mispredict) | Surprise; the world violated prediction; costly flush and re-perceive |
 | **Structural hazard** (unit contended) | Working-memory overload; divided attention; the reason multitasking fails |
 
@@ -115,8 +128,9 @@ failure**. HISA's key reliability feature is the **read-only `FR` (Fitrah) regis
 because the factory configuration cannot be overwritten, the machine always retains a
 correct reference image to restore toward. `REPENT` (in the `Vo` extension) is the
 architectural *reset-to-known-good* operation. No corruption of the learned overlay can
-destroy the reference. This is, in engineering terms, why the book holds that return is
-always possible.
+destroy the reference. The book holds that return is always possible on religious
+grounds (Quran 39:53); this section restates that teaching in engineering terms rather
+than deriving it.
 
 ---
 

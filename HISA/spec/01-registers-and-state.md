@@ -13,7 +13,7 @@ the machine computes with directly, backed by a vast **memory**.
 
 ## 1. Register files
 
-### 1.1 Sensory input registers - `S0`–`S5` (the Layer-3 ports) - [A]
+### 1.1 Sensory input registers - `S0` to `S5` (the Layer-3 ports) - [A]
 
 Read-mostly registers into which the sense transducers write. One per primary modality.
 Unlike silicon input ports, each holds a *rich structured value*, not a fixed-width word.
@@ -21,29 +21,29 @@ Unlike silicon input ports, each holds a *rich structured value*, not a fixed-wi
 | Reg | Modality | Native range (the "bus width" of the sense) |
 |-----|----------|---------------------------------------------|
 | `S0` | Touch / somatosensation | pressure, temperature, nociception |
-| `S1` | Vision | electromagnetic 380–750 nm |
-| `S2` | Audition | acoustic 20 Hz – 20 kHz |
+| `S1` | Vision | electromagnetic 380 to 750 nm |
+| `S2` | Audition | acoustic 20 Hz to 20 kHz |
 | `S3` | Olfaction | airborne chemistry |
 | `S4` | Gustation | dissolved chemistry |
 | `S5` | Vestibular / proprioception | acceleration, joint & body position |
 
 > **Note (ties to the book):** each register's range is a *narrow tuned band*. What
-> falls outside all of `S0`–`S5` is, to this machine, part of the **Unseen**. A proposed
+> falls outside all of `S0` to `S5` is, to this machine, part of the **Unseen**. A proposed
 > extra port `S6` (ambient electromagnetic field, ELF→IR) is defined only under the
 > **[C]** `Q` extension.
 
-### 1.2 Working registers - `W0`–`W6` - [A]
+### 1.2 Working registers - `W0` to `W6` - [A]
 
 The general-purpose computational registers: the contents of conscious working memory.
 Famously *small* - about seven items (Miller, 1956), later revised toward four chunks
 (Cowan, 2001). This is the single tightest resource in the machine and the reason
 attention must be scheduled (see the OS scheduler).
 
-- `W0`–`W6`: general working registers (orthogonal; any faculty may read/write them).
+- `W0` to `W6`: general working registers (orthogonal; any faculty may read/write them).
 - Overflow of the working set forces eviction to long-term memory or loss - the origin
   of *forgetting under load*.
 
-### 1.3 Affective state registers - `E0`–`E3` - [A]
+### 1.3 Affective state registers - `E0` to `E3` - [A]
 
 Hold the current emotional state, which biases every downstream operation (emotion is
 not decorative; it is an input to decoding and execution). Modelled on a low-dimensional
@@ -56,7 +56,7 @@ affect space (valence, arousal, dominance; Russell, 1980) plus a discrete-emotio
 | `E2` | Dominance (in-control ↔ controlled) |
 | `E3` | Discrete-emotion tag (fear, anger, joy, grief, …) |
 
-### 1.4 Motor / actuation registers - `M0`–`M2` - [A]
+### 1.4 Motor / actuation registers - `M0` to `M2` - [A]
 
 Write registers whose contents are dispatched to the actuators (muscles, glands,
 vocal tract). The *commit* stage of the pipeline writes here.
@@ -72,14 +72,16 @@ subject of the book.
 |-----|------|--------|---------|-------|
 | `AP` | **Attention Pointer** | R/W | The "program counter" of cognition: what the machine is currently attending to / executing. | [A] |
 | `NR` | **Niyyah Register** | R/W, privileged | Current **intention** - the deferred, committed goal that gates whether an action counts as chosen. The book's *Niyyah*; see the `T` extension. | [B] |
-| `FR` | **Fitrah Register** | **Read-only** | The firmware/factory configuration - the innate disposition present at boot (DNA + *Fitrah*). Cannot be overwritten, only overlaid by learned state. | [B] |
+| `FR` | **Fitrah Register** | **Read-only** | Models the *Fitrah*, the original disposition on which every child is born (Sahih al-Bukhari 1385). Cannot be overwritten, only overlaid by learned state. DNA is modelled separately, at L2, as biology. | [B] |
+| `DA` `5HT` `NE` `ACh` | **Neuromodulator mode registers** | Set by `MODUL` | Chemical "modes" that change what the same circuit computes. Defined in the [`N` extension](06-neural-network-extension.md). | [A/B] |
 | `PL` | **Privilege Level** | R, set by mode switch | Current privilege mode (see §4). | [A] |
 | `QC` | **Qarin Channel** | R (proposed) | Interface register for the attached observer (*Qarin*); a proposed read side-channel. | **[C]** |
-| `HZ` | **Hazard/Conscience flag** | R/W | Sets when a pending action conflicts with `NR`/`FR` - the felt "check" before wrongdoing. | [B] |
+| `HZ` | **Hazard/Conscience flag** | R/W | Sets when a pending action conflicts with `NR`/`FR` - the felt warning before wrongdoing. | [B] |
 
-> `FR` being **read-only** is a deliberate and load-bearing design choice: the *Fitrah*
-> is overlaid by learning but never erased, which is why the specification models
-> *return* to it (repentance, *fitrah* re-exposure) as always architecturally possible.
+> `FR` being **read-only** is a deliberate design choice. It models a religious
+> teaching, not a laboratory measurement: the *Fitrah* is overlaid by learning but never
+> erased, and the door of repentance stays open (Quran 39:53). That is why the
+> specification models *return* (repentance, *fitrah* re-exposure) as always possible.
 
 ---
 
@@ -87,7 +89,7 @@ subject of the book.
 
 | Tier | Silicon analogue | HISA | Class |
 |------|------------------|------|-------|
-| Registers | Register file | `W0`–`W6` working memory (~4–7 items) | [A] |
+| Registers | Register file | `W0` to `W6` working memory (~4 to 7 items) | [A] |
 | L1 cache | Fast cache | Short-term / phonological & visuospatial buffers | [A] |
 | Main memory | DRAM | **Long-term memory** - effectively unbounded, **content-addressable** (associative), not address-indexed | [A] |
 | Persistent store | Disk | Consolidated memory after sleep-dependent consolidation | [A] |

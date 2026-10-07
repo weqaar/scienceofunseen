@@ -3,25 +3,34 @@
 > These are the **standard extensions** that turn LISA into HISA, in the way RISC-V's
 > `M`, `A`, `F`, `D`, `C`, `V` turn `RV32I` into a full application processor. Each is
 > named by a letter, has a stated dependency, and lists its instructions in ISA-manual
-> style. A machine implementing all of them is written **`HISA-LRMSVoTEQ`** (by analogy
+> style. A machine implementing all of them is written **`HISA-NLRMSVoTEQ`** (by analogy
 > with `RV32IMAFDC`).
 >
 > The extensions are ordered by increasing distance from the animal baseline. The last
 > two (`E` partially, `Q` wholly) carry the book's most human and most speculative
 > claims, and are flagged accordingly.
+>
+> **How to read these extensions.** On a silicon chip an extension is hardware: the
+> opcodes are built in. In the human machine, most of what follows is **learned**: a
+> network trains itself until it can perform the operation, and each person's version
+> differs. Read every instruction below as a *learned function running on the neural
+> substrate* described in the [`N` extension](06-neural-network-extension.md), not as a
+> fixed circuit.
 
 Dependency summary:
 
 ```
 LISA (base)
-  ├─ L  Language            depends on: base signalling
-  ├─ M  Memory              depends on: SYN
-  ├─ R  Reasoning           depends on: L, M
-  ├─ S  Self-reference      depends on: R, M
-  ├─ T  Time-binding        depends on: R, NR
-  ├─ Vo Volition            depends on: S, T          ← the Amanah
-  ├─ E  Affect              depends on: base (couples to all)
-  └─ Q  Qarin channel [C]   depends on: -  (adversarial side-channel)
+└─ N  Neural network        depends on: base signalling   ← the learning substrate
+   │  (every extension below is a learned function running on N)
+   ├─ L  Language            depends on: N
+   ├─ M  Memory              depends on: N (SYN, STDP)
+   ├─ R  Reasoning           depends on: L, M
+   ├─ S  Self-reference      depends on: R, M
+   ├─ T  Time-binding        depends on: R, NR
+   ├─ Vo Volition            depends on: S, T          ← the Amanah
+   ├─ E  Affect              depends on: N mode registers (couples to all)
+   └─ Q  Qarin channel [C]   depends on: -  (adversarial side-channel)
 ```
 
 ---
@@ -73,7 +82,7 @@ Turns raw `SYN` plasticity into structured, addressable memory systems.
 ## `S` - Self-reference extension  [B]
 
 The machine models itself as an object in its own memory. This reflexive capacity is the
-structure Gödel (1931) showed can shake a formal system, and that Hofstadter (1979)
+structure Gödel (1931) demonstrated can shake a formal system, and that Hofstadter (1979)
 argued is the germ of selfhood.
 
 | Mnemonic | Operands | Action | Correlate |
@@ -103,8 +112,9 @@ for delayed gratification.
 The capacity to select an action **against** the machine's own optimisation gradient -
 to choose the worse-for-me because it is the right. This is the extension the book
 identifies with the *Amanah*, the trust the heavens and earth declined (Quran 33:72).
-It is what makes the machine's execution **non-deterministic in principle**, not merely
-in practice.
+In this model it is what makes the machine's execution **non-deterministic in principle**,
+not merely in practice. That is a theological and philosophical claim **[C]**: neither
+neuroscience nor this specification can measure it.
 
 | Mnemonic | Operands | Action |
 |----------|----------|--------|
@@ -112,15 +122,18 @@ in practice.
 | `OVERRIDE` | `rs1` | `PL3` overrules a `PL1` habit or appetite about to execute `rs1` |
 | `REPENT`| - | Discard accumulated corrupt state; re-expose `FR` (Fitrah); reset `HZ` |
 
-> `REPENT` is architecturally always available because `FR` is read-only and therefore
+> `REPENT` is always available in the model because `FR` is read-only and therefore
 > never destroyed (see [registers](01-registers-and-state.md)). No matter how corrupt the
-> overlay, the factory configuration can be re-exposed. This is a design guarantee, not a
-> sentiment.
+> overlay, the original configuration can be re-exposed. The model is built this way to
+> mirror a religious teaching, that no one should despair of the mercy of Allah (سُبْحَانَهُ وَتَعَالَى) (Quran
+> 39:53); the guarantee comes from that teaching, not from the engineering.
 
 ## `E` - Affect extension  [A/B]
 
 Emotion as a cross-cutting modulator: it biases decode, weights memory, and sets the
-gain on nearly every other instruction. Operates on `E0`–`E3`.
+gain on nearly every other instruction. Operates on `E0` to `E3`, and is implemented
+largely through the neuromodulator mode registers of the
+[`N` extension](06-neural-network-extension.md) (`DA`, `5HT`, `NE`, `ACh`).
 
 | Mnemonic | Operands | Action |
 |----------|----------|--------|
@@ -161,4 +174,4 @@ Defence instructions (the "firewall"), the book's practices expressed as ISA ope
 
 ---
 
-→ [Vector extension »](05-vector-extension.md) · [Microarchitecture »](../microarch/pipeline.md)
+→ [Vector extension »](05-vector-extension.md) · [Neural network extension »](06-neural-network-extension.md) · [Microarchitecture »](../microarch/pipeline.md)

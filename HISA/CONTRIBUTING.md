@@ -9,7 +9,7 @@ claim traceable to its source.
 1. **Tag every non-trivial claim** with a class:
    - `[A]` established (cite peer-reviewed science or standard engineering),
    - `[B]` model/mapping (a defensible structural analogy),
-   - `[C]` speculative (internally consistent, awaiting evidence).
+   - `[C]` speculative (internally consistent, awaiting proof).
    Mislabelling `[C]` as `[A]` is the one thing this project treats as a defect.
 2. **Cite.** Any `[A]` claim needs a real, verifiable reference.
 3. **Keep the ISA-manual voice.** Instructions are listed with mnemonic, operands,
@@ -32,4 +32,7 @@ claim traceable to its source.
 - Is the human **"truly complete"** (able to express any operation a living system could)?
   The book leaves this open on purpose - *are we?*
 - Formalise the `SYN`-scheduling optimiser against known results in learning theory.
-- Propose falsifiable predictions for any `[C]` claim to move it toward `[B]` or `[A]`.
+- Extend the [`N` extension](spec/06-neural-network-extension.md): which further
+  operations does the nervous system learn rather than inherit, and how would you test
+  whether a proposed operation is substrate (Tier 1) or learned (Tier 3)?
+- Propose testable predictions for any `[C]` claim to move it toward `[B]` or `[A]`.

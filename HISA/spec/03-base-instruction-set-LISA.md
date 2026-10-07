@@ -49,8 +49,11 @@ Notation: `rd` destination register, `rs1`/`rs2` source registers, `imm` immedia
 | `HORM`  | `rs1, imm` | I | Broadcast chemical signal `rs1` at level `imm` over the bus | Endocrine signalling |
 | `IMMUN` | `rd, rs1` | R | Tag `rs1` as self/non-self; dispatch response to `rd` | Immune recognition |
 
-> `SYN` is the **write instruction of the learning hardware** - the single primitive
-> whose repeated execution *is* learning. The toolchain's optimiser (see
+> `SYN` is the **write instruction of the learning hardware**: repeated weight changes
+> are the main way learning is stored. `FIRE` and `SYN` are summaries; the
+> [`N` extension](06-neural-network-extension.md) splits them into the distinct
+> biological operations they cover (integration, spiking, timing-dependent
+> plasticity, growth and pruning of connections, chemical modulation). The toolchain's optimiser (see
 > [`toolchain/compiler.md`](../toolchain/compiler.md)) is, at bottom, a scheduler of
 > `SYN` operations.
 
@@ -58,8 +61,8 @@ Notation: `rd` destination register, `rs1`/`rs2` source registers, `imm` immedia
 
 | Mnemonic | Operands | Fmt | Action | Correlate |
 |----------|----------|-----|--------|-----------|
-| `SENSE` | `rd, rs1` | R | Transduce external energy on port `rs1` into value `rd` | Sensory transduction (writes `S0`–`S5`) |
-| `ACT`   | `rs1` | I | Dispatch motor command `rs1` to an actuator | Muscle contraction (reads `M0`–`M2`) |
+| `SENSE` | `rd, rs1` | R | Transduce external energy on port `rs1` into value `rd` | Sensory transduction (writes `S0` to `S5`) |
+| `ACT`   | `rs1` | I | Dispatch motor command `rs1` to an actuator | Muscle contraction (reads `M0` to `M2`) |
 | `SECR`  | `rs1, imm` | I | Secrete substance `rs1` at level `imm` | Glandular secretion |
 
 ## 5. Control-flow group

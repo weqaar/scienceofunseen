@@ -10,17 +10,17 @@
 
 A single act of recognition - seeing a face, catching a ball, parsing a sentence - applies
 the *same* operation across an enormous number of elements simultaneously. The visual
-system alone processes on the order of 10⁶ retinal inputs in parallel through a cortex of
-~10¹¹ neurons. There is no serial loop over pixels; there is one massively wide vector
+system alone takes in about 10⁶ retinal nerve fibres in parallel, feeding a cerebral
+cortex of about 1.6 x 10¹⁰ neurons (Azevedo et al., 2009). There is no serial loop over pixels; there is one massively wide vector
 operation. The brain is, natively, a vector processor.
 
 ## 2. Where it exceeds any silicon vector unit  [A for scale, B for framing]
 
 | Property | Silicon SIMD / GPU | HISA `V` |
 |----------|--------------------|----------|
-| Vector width (lanes) | 4–512 (CPU SIMD); ~10⁴–10⁵ (GPU) | ~10¹¹ elements engaged in a single perceptual op |
+| Vector width (lanes) | 4 to 512 (CPU SIMD); about 10⁴ to 10⁵ (GPU) | up to billions of cortical neurons engaged together, each a small network in its own right ([`N` §3](06-neural-network-extension.md)) |
 | Lane count fixed at manufacture | Yes | **No** - recruited dynamically; plastic |
-| Clocked | Yes (thermal cap) | **Asynchronous**, no global clock |
+| Clocked | Yes (thermal cap) | **Asynchronous**; coordinated by local rhythms (`SYNC`), not one clock |
 | Elements are fixed-width | Yes (e.g. 32-bit floats) | **No** - each element an arbitrarily rich value |
 | Precision | Fixed | **Mixed/adaptive** (sharp where attended, coarse elsewhere) |
 
@@ -43,12 +43,14 @@ operation. The brain is, natively, a vector processor.
 > inverts the naive picture of attention as a spotlight scanning a dark room - the room is
 > already fully lit in parallel; attention is a mask over an all-at-once computation.
 
-## 4. Consequence for the complexity claim  [B/C]
+## 4. Consequence for prediction  [B]
 
-The vast vector width is one of the structural reasons the book proposes that *complete
-prediction of a human is at least NP-hard*: the joint state of ~10¹¹ interacting elements,
-updated in parallel and non-linearly, has a configuration space whose exhaustive analysis
-explodes. The vector engine is not just fast; it is a source of the machine's genuine
-analytical intractability from the outside.
+The vector width helps you picture why predicting a person in full is so hard: the joint
+state of billions of interacting elements, updated in parallel and non-linearly, has a
+configuration space far too large to search exhaustively. The comparison stops there. The
+book is explicit that a person "is not a precisely defined computational task such as
+those classified as NP-hard," and that difficulty in predicting someone proves neither free
+will nor a human instruction set. HISA therefore makes no complexity-class claim about
+people.
 
-← [Human extensions](04-extensions-human.md) · [Microarchitecture »](../microarch/pipeline.md)
+← [Human extensions](04-extensions-human.md) · [Neural network extension »](06-neural-network-extension.md) · [Microarchitecture »](../microarch/pipeline.md)

@@ -25,13 +25,18 @@ compiled output of your most-repeated inputs.
 
 ## 2. The optimiser is a `SYN` scheduler  [A/B]
 
-Learning, at the base ISA, is nothing but repeated `SYN` (synaptic-weight) writes (Hebb,
-1949). The "optimiser" is whatever schedules those writes efficiently:
+Learning, at the base ISA, is mostly repeated `SYN` (synaptic-weight) writes (Hebb,
+1949), refined in the [`N` extension](../spec/06-neural-network-extension.md) into
+timing-dependent weight changes, growth and pruning of connections, and chemical control
+of the learning rate. The "optimiser" is whatever schedules those changes efficiently:
 
 - **Spaced repetition** > massed repetition (the spacing effect; Ebbinghaus, 1885) - the
   optimiser gets better code from distributed `SYN` writes.
 - **Sleep is the link stage.** Durable installation (`CONS`) requires sleep-dependent
   consolidation; without it the binary does not persist.
+- **Reward sets the direction.** A result better than expected produces a dopamine
+  prediction-error signal (`RPE`) that reinforces whatever was just done (Schultz, Dayan &
+  Montague, 1997). This is why rewarded behaviour compiles faster.
 - **Emotion sets optimisation priority.** `TAG` (E-extension) marks salient experience for
   aggressive optimisation - why one frightening event compiles in a single pass while dull
   facts need dozens.
@@ -45,7 +50,7 @@ Learning, at the base ISA, is nothing but repeated `SYN` (synaptic-weight) write
 - **The `FR` (Fitrah) is the standard prelude.** Every compilation runs against a
   read-only innate prelude; learned code overlays but never deletes it.
 - **Malicious linkage.** The `Q`-extension `WHISPER` attempts to inject instructions into
-  the compile queue (*waswas*); `FLUSH`/`AUTH` are the linker's signature checks.
+  the compile queue (*waswas*); `FLUSH`/`AUTH` are the linker's signature verification.
 
 ## 4. Decompilation and refactoring  [B]
 
